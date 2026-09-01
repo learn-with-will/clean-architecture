@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-06",
+  "lessonId": "lesson-06",
+  "title": "The Dependency Rule",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "The Dependency Rule constrains which kind of dependency?",
+      "options": [
+        { "id": "a", "text": "Source-code (compile-time) dependencies — what imports/mentions what" },
+        { "id": "b", "text": "The runtime flow of control — who calls whom" },
+        { "id": "c", "text": "Network dependencies only" },
+        { "id": "d", "text": "Database foreign keys" }
+      ],
+      "answer": "a",
+      "explanation": "The rule governs source-code dependencies (imports). It says nothing about the runtime flow of control, which often points the other way."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "How can a use case cause a presenter to run without violating the Dependency Rule?",
+      "options": [
+        { "id": "a", "text": "By importing the presenter class directly" },
+        { "id": "b", "text": "By calling through an output port — an interface the use case owns that the presenter implements" },
+        { "id": "c", "text": "It cannot; use cases may never trigger presenters" },
+        { "id": "d", "text": "By putting the presenter in the entities layer" }
+      ],
+      "answer": "b",
+      "explanation": "An output port lets control flow outward to the presenter while the source-code dependency (presenter → interface) still points inward."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Data that crosses a boundary should be a simple data structure, often called a ______ — never an entity or an ORM row.",
+      "answer": ["DTO", "dto", "data transfer object"],
+      "explanation": "A DTO (Data Transfer Object) / request-response model crosses boundaries so neither side depends on the other's internals."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which imports are ILLEGAL under the Dependency Rule (inner mentioning outer)? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "An entity imports the Postgres driver" },
+        { "id": "b", "text": "A use case imports an HTTP controller" },
+        { "id": "c", "text": "A use case imports an entity" },
+        { "id": "d", "text": "An entity imports a use case" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Inner code may not mention outer code: an entity importing a driver, a use case importing a controller, and an entity importing a use case are all illegal. A use case importing an entity points inward and is fine."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these from highest-level (furthest from I/O) to lowest-level (closest to I/O).",
+      "items": [
+        { "id": "entities", "text": "Entities" },
+        { "id": "usecases", "text": "Use Cases" },
+        { "id": "adapters", "text": "Interface Adapters" },
+        { "id": "frameworks", "text": "Frameworks & Drivers" }
+      ],
+      "answer": ["entities", "usecases", "adapters", "frameworks"],
+      "explanation": "'Level' is distance from inputs and outputs; entities are highest-level (furthest from I/O), frameworks lowest. Lower levels depend on higher, never the reverse."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each concept to its description.",
+      "pairs": [
+        { "left": "Source-code dependency", "right": "What a module imports/mentions" },
+        { "left": "Flow of control", "right": "Which code calls which at run time" },
+        { "left": "Output port", "right": "An inner-owned interface control crosses outward through" },
+        { "left": "Level", "right": "A module's distance from inputs and outputs" }
+      ],
+      "explanation": "The rule constrains source-code dependencies; control flow can oppose them via ports; level orders the system by distance from I/O."
+    }
+  ]
+}

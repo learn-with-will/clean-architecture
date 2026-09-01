@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-23",
+  "lessonId": "lesson-23",
+  "title": "Pitfalls and Trade-offs",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order these from the LEAST architectural investment deserved to the MOST (proportionate architecture).",
+      "items": [
+        { "id": "spike", "text": "A one-week throwaway spike" },
+        { "id": "crud", "text": "A simple internal CRUD admin screen with no rules" },
+        { "id": "engine", "text": "A long-lived pricing engine with complex, changing rules" }
+      ],
+      "answer": ["spike", "crud", "engine"],
+      "explanation": "Match investment to stakes: a throwaway spike needs almost none, simple CRUD needs little, and a complex long-lived engine justifies the full Clean Architecture stack."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "When might a SIMPLER design (not full Clean Architecture) be the right call? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Short-lived or throwaway code (a script or spike)" },
+        { "id": "b", "text": "Simple CRUD with little business logic" },
+        { "id": "c", "text": "A tiny app that fits in your head and won't grow" },
+        { "id": "d", "text": "A large, long-lived system with complex, changing rules" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Simpler is often better for throwaway, trivial-CRUD, or tiny apps. A large, long-lived system with complex rules is exactly where full Clean Architecture pays off."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The failure mode of TOO LITTLE structure — a haphazard, sprawling system with no discernible architecture — is called a Big Ball of ______.",
+      "answer": ["Mud", "mud"],
+      "explanation": "Foote & Yoder's 'Big Ball of Mud' is the risk of no architecture. The answer isn't 'no architecture' but proportionate architecture."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What is the real goal that all of Clean Architecture's rules serve?",
+      "options": [
+        { "id": "a", "text": "Adding as many layers as possible" },
+        { "id": "b", "text": "Minimizing the cost of change and keeping options open" },
+        { "id": "c", "text": "Matching the four-circle diagram exactly" },
+        { "id": "d", "text": "Making code run faster" }
+      ],
+      "answer": "b",
+      "explanation": "The measure is always the cost of change and keeping options open — not conformance to a diagram or a layer count. Abstractions that don't lower change cost should be removed."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each anti-pattern to its description.",
+      "pairs": [
+        { "left": "Over-abstraction", "right": "Interfaces/layers with no real need — a YAGNI violation" },
+        { "left": "Leaking entities", "right": "Passing entities or ORM rows across boundaries, recoupling layers" },
+        { "left": "Anemic use case", "right": "A use case that only forwards to a gateway, adding a pointless boundary" },
+        { "left": "Dogma over judgment", "right": "Following the rules as laws instead of serving the cost-of-change goal" }
+      ],
+      "explanation": "These are the common ways Clean Architecture is misapplied; each trades real cost for no benefit."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Should Clean Architecture's rules be treated as strict, unbreakable laws?",
+      "options": [
+        { "id": "a", "text": "Yes — always add a port, never skip a layer" },
+        { "id": "b", "text": "No — they're heuristics serving the cost-of-change goal; architects decide which boundaries to implement and which to ignore" },
+        { "id": "c", "text": "Yes — the diagram is the law" },
+        { "id": "d", "text": "No — you should ignore them entirely" }
+      ],
+      "answer": "b",
+      "explanation": "The rules are heuristics. Where a rule stops serving cheap change in a given spot, it's the wrong rule there — but the answer is proportionate architecture, not none."
+    }
+  ]
+}

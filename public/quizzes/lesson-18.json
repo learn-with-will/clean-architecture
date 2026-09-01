@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-18",
+  "lessonId": "lesson-18",
+  "title": "Component Cohesion and Coupling",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "The Common Closure Principle (CCP) is essentially which class-level principle, applied to components?",
+      "options": [
+        { "id": "a", "text": "The Single Responsibility Principle (group classes that change for the same reasons)" },
+        { "id": "b", "text": "The Liskov Substitution Principle" },
+        { "id": "c", "text": "The Open-Closed Principle" },
+        { "id": "d", "text": "The Interface Segregation Principle" }
+      ],
+      "answer": "a",
+      "explanation": "CCP is SRP for components: gather classes that change for the same reasons and at the same times, so a change touches as few components as possible."
+    },
+    {
+      "id": "q2",
+      "type": "ordering",
+      "prompt": "Given instability I = Ce/(Ca+Ce), order these components from MOST stable to MOST unstable.",
+      "items": [
+        { "id": "a", "text": "Component A — I = 0.0" },
+        { "id": "b", "text": "Component B — I = 0.5" },
+        { "id": "c", "text": "Component C — I = 0.9" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Lower instability means more stable. I = 0 is maximally stable (much depends on it, it depends on nothing); dependencies should point from higher-I toward lower-I components."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The Acyclic Dependencies Principle says the component dependency graph must contain no ______.",
+      "answer": ["cycles", "cycle"],
+      "explanation": "The component graph must be a directed acyclic graph (DAG). Break a cycle with DIP or by extracting a new component."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are valid ways to break a dependency cycle in the component graph? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Apply DIP — invert one dependency with an interface" },
+        { "id": "b", "text": "Extract a new component that both cyclic components depend on" },
+        { "id": "c", "text": "Add another dependency to complete the loop" },
+        { "id": "d", "text": "Permanently merge everything into one giant component" }
+      ],
+      "answer": ["a", "b"],
+      "explanation": "Inverting a dependency (DIP) or extracting a shared component restores an acyclic graph (ADP). Adding dependencies or merging everything does not properly break the cycle."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each component principle acronym to its idea.",
+      "pairs": [
+        { "left": "REP", "right": "The granule of reuse is the granule of release" },
+        { "left": "CRP", "right": "Don't force clients to depend on classes they don't use" },
+        { "left": "SDP", "right": "Depend in the direction of stability" },
+        { "left": "SAP", "right": "A component's abstractness should match its stability" }
+      ],
+      "explanation": "REP/CCP/CRP are the cohesion principles; ADP/SDP/SAP are the coupling principles. SDP + SAP mean stable components should be abstract."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "A concrete 'common' package (A ≈ 0) that everything depends on (I ≈ 0) sits in which zone?",
+      "options": [
+        { "id": "a", "text": "The Zone of Pain — stable and concrete, rigid but heavily depended on" },
+        { "id": "b", "text": "The Zone of Uselessness — abstract and unstable" },
+        { "id": "c", "text": "Exactly on the Main Sequence" },
+        { "id": "d", "text": "Nowhere; the metrics don't apply" }
+      ],
+      "answer": "a",
+      "explanation": "Low abstractness + low instability is the Zone of Pain: rigid yet universally depended upon. SAP says such a stable component should be abstract so it can be extended."
+    }
+  ]
+}

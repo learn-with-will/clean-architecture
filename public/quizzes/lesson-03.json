@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-03",
+  "lessonId": "lesson-03",
+  "title": "Coupling, Cohesion, and Dependencies",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the difference between a source-code dependency and a runtime dependency?",
+      "options": [
+        { "id": "a", "text": "They are the same thing" },
+        { "id": "b", "text": "A source-code dependency is what your code imports/mentions at compile time; a runtime dependency is which code calls which at run time" },
+        { "id": "c", "text": "A source-code dependency only exists in compiled languages" },
+        { "id": "d", "text": "A runtime dependency is always the reverse of coupling" }
+      ],
+      "answer": "b",
+      "explanation": "Source-code dependencies (imports) are fixed at compile time; runtime dependencies are actual calls. They often point the same way — but architecture's key trick is making them oppose."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "A module has many INCOMING dependencies (many things depend on it). This makes it:",
+      "options": [
+        { "id": "a", "text": "Volatile — easy to change" },
+        { "id": "b", "text": "Stable — costly to change because much relies on it" },
+        { "id": "c", "text": "Cohesive by definition" },
+        { "id": "d", "text": "Loosely coupled by definition" }
+      ],
+      "answer": "b",
+      "explanation": "Many incoming (afferent) dependencies make a module stable: changing it disrupts everything that depends on it, so you avoid changing it often."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "You want low coupling and ______ cohesion.",
+      "answer": ["high"],
+      "explanation": "Good design aims for loose coupling (modules don't rely on each other's internals) and high cohesion (a module's parts belong together)."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are signs of LOOSE coupling? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A class depends on a small interface rather than a concrete implementation" },
+        { "id": "b", "text": "You can swap a collaborator (e.g., for a test fake) without editing the class" },
+        { "id": "c", "text": "A class constructs its collaborators with `new` and calls their private helpers" },
+        { "id": "d", "text": "A change to a collaborator's internals doesn't break the class" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Loose coupling means depending on small stable contracts and being able to swap implementations. Constructing concretes and using their internals is tight coupling."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these from MOST volatile to MOST stable in a healthy dependency chain (dependencies should point from volatile toward stable).",
+      "items": [
+        { "id": "framework", "text": "Web framework / DB driver" },
+        { "id": "adapter", "text": "Interface adapter" },
+        { "id": "usecase", "text": "Use case" },
+        { "id": "entity", "text": "Entity" }
+      ],
+      "answer": ["framework", "adapter", "usecase", "entity"],
+      "explanation": "Volatile details (frameworks) should depend toward stable policy (entities). Stability increases as you move inward, which is why dependencies point that way."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its definition.",
+      "pairs": [
+        { "left": "Coupling", "right": "How much one module relies on another's details" },
+        { "left": "Cohesion", "right": "How well the parts inside a module belong together" },
+        { "left": "Afferent coupling", "right": "Incoming dependencies — things that depend on you" },
+        { "left": "Efferent coupling", "right": "Outgoing dependencies — things you depend on" }
+      ],
+      "explanation": "Coupling is between modules; cohesion is within one. Afferent = incoming, efferent = outgoing."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-01",
+  "lessonId": "lesson-01",
+  "title": "What Is Clean Architecture?",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the single non-negotiable rule of Clean Architecture?",
+      "options": [
+        { "id": "a", "text": "There must be exactly four layers" },
+        { "id": "b", "text": "Source-code dependencies must point only inward, toward higher-level policy" },
+        { "id": "c", "text": "You must not use any framework" },
+        { "id": "d", "text": "Every class needs an interface" }
+      ],
+      "answer": "b",
+      "explanation": "The Dependency Rule — source-code dependencies point only inward — is the mandatory core. The number of layers is illustrative, and frameworks/interfaces are means, not the rule."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "According to Clean Architecture, which of these are 'details' the core should be independent of? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "The database" },
+        { "id": "b", "text": "The web/UI" },
+        { "id": "c", "text": "The framework" },
+        { "id": "d", "text": "The business rules themselves" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "The database, UI, and frameworks are volatile details kept at the edge. The business rules are the core value the architecture protects, not a detail."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The rule that source-code dependencies may point only inward is called the ______ Rule.",
+      "answer": ["Dependency", "dependency"],
+      "explanation": "The Dependency Rule is the defining constraint of Clean Architecture."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order the four example layers from innermost (highest-level) to outermost (lowest-level).",
+      "items": [
+        { "id": "entities", "text": "Entities" },
+        { "id": "usecases", "text": "Use Cases" },
+        { "id": "adapters", "text": "Interface Adapters" },
+        { "id": "frameworks", "text": "Frameworks & Drivers" }
+      ],
+      "answer": ["entities", "usecases", "adapters", "frameworks"],
+      "explanation": "From the core outward: Entities (enterprise rules), Use Cases (application rules), Interface Adapters (controllers/presenters/gateways), then Frameworks & Drivers (the volatile outside)."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each architecture to the person who created it.",
+      "pairs": [
+        { "left": "Clean Architecture", "right": "Robert C. Martin" },
+        { "left": "Hexagonal / Ports & Adapters", "right": "Alistair Cockburn" },
+        { "left": "Onion Architecture", "right": "Jeffrey Palermo" }
+      ],
+      "explanation": "These three are related but distinct: Clean (Martin), Hexagonal/Ports & Adapters (Cockburn), and Onion (Palermo). Attribute each correctly."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Does 'independent of frameworks' mean a Clean Architecture app avoids frameworks entirely?",
+      "options": [
+        { "id": "a", "text": "Yes — frameworks are forbidden" },
+        { "id": "b", "text": "No — you still use frameworks, but keep them at the outer edge as replaceable details" },
+        { "id": "c", "text": "Yes — you must write everything from scratch" },
+        { "id": "d", "text": "No — because frameworks are part of the entities layer" }
+      ],
+      "answer": "b",
+      "explanation": "You still use frameworks; the point is to keep them in the outer ring as replaceable details rather than building your business rules inside them."
+    }
+  ]
+}

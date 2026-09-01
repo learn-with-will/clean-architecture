@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-22",
+  "lessonId": "lesson-22",
+  "title": "Frameworks and Databases as Details",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "ordering",
+      "prompt": "Order these locations by how APPROPRIATE it is for framework code to appear (most appropriate first).",
+      "items": [
+        { "id": "main", "text": "Main / composition root" },
+        { "id": "adapter", "text": "Controller / adapter" },
+        { "id": "usecase", "text": "Use case" },
+        { "id": "entity", "text": "Entity" }
+      ],
+      "answer": ["main", "adapter", "usecase", "entity"],
+      "explanation": "Framework code belongs at the edge (Main and adapters). It should not appear in use cases, and least of all in entities, where it would drag a volatile detail into the core."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the 'asymmetric marriage' with a framework?",
+      "options": [
+        { "id": "a", "text": "You and the framework share risk equally" },
+        { "id": "b", "text": "You commit heavily to the framework, but it doesn't commit to you — its authors change and deprecate it on their schedule, so you carry the risk" },
+        { "id": "c", "text": "The framework depends on your code" },
+        { "id": "d", "text": "Frameworks never change" }
+      ],
+      "answer": "b",
+      "explanation": "You inherit, annotate, and structure around the framework; it evolves for its own reasons. Keeping it out of the core protects your most valuable code."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The advice to keep a framework at arm's length so it can't dictate or invade your core is often phrased: don't ______ the framework.",
+      "answer": ["marry"],
+      "explanation": "'Don't marry the framework' — use it from the edge, behind your own abstractions, so it stays a replaceable plugin."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Framework (in Clean Architecture)", "right": "A detail/tool in the outer ring the core must not depend on" },
+        { "left": "Asymmetric marriage", "right": "You commit to the framework, but it doesn't commit to you" },
+        { "left": "Wrapping", "right": "Hiding a framework capability behind your own interface" },
+        { "left": "Blast radius", "right": "How far a change (like an upgrade) can reach into your code" }
+      ],
+      "explanation": "Treat frameworks as details, wrap the capabilities the core needs behind your own interfaces, and keep them at the edge to shrink the blast radius of framework changes."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which practices keep a framework's blast radius small? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Keep entities and use cases framework-free" },
+        { "id": "b", "text": "Use the framework in adapters and Main" },
+        { "id": "c", "text": "Wrap framework capabilities behind your own interfaces" },
+        { "id": "d", "text": "Annotate entities with ORM and serialization decorators" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Confining the framework to adapters/Main and wrapping it behind interfaces limits blast radius. Annotating entities drags the framework into the core."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Does 'don't marry the framework' mean you should avoid frameworks?",
+      "options": [
+        { "id": "a", "text": "Yes — never use a framework" },
+        { "id": "b", "text": "No — use frameworks, but from the outer ring behind your own abstractions so they stay replaceable plugins" },
+        { "id": "c", "text": "Yes — hand-code everything" },
+        { "id": "d", "text": "No — put frameworks in the entities layer" }
+      ],
+      "answer": "b",
+      "explanation": "Frameworks are useful; the point is to keep them at the edge as plugins rather than letting them become the platform your app is built inside."
+    }
+  ]
+}

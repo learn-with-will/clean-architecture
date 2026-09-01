@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-10",
+  "lessonId": "lesson-10",
+  "title": "Crossing Boundaries",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "When control flows OUTWARD across a boundary, which way does the source-code dependency point, and why?",
+      "options": [
+        { "id": "a", "text": "Outward too, because control and dependencies always match" },
+        { "id": "b", "text": "Inward, because the inner component calls through an interface it owns that the outer component implements" },
+        { "id": "c", "text": "It has no dependency" },
+        { "id": "d", "text": "Inward, but only in compiled languages" }
+      ],
+      "answer": "b",
+      "explanation": "Calling 'against the flow' is handled by dependency inversion: the inner side calls through an owned interface, so control flows out while the source dependency points in."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is an OUTPUT port?",
+      "options": [
+        { "id": "a", "text": "The interface a driver uses to invoke a use case" },
+        { "id": "b", "text": "An interface the use case owns and calls to send results outward, implemented by an outer component" },
+        { "id": "c", "text": "A database connection" },
+        { "id": "d", "text": "The entity that holds the result" }
+      ],
+      "answer": "b",
+      "explanation": "An output port is owned by the use case and called to report results; a presenter (outer) implements it. The interface a driver invokes is the input port."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The plain data structures created specifically to carry a use case's inputs and outputs across a boundary are the request and ______ models.",
+      "answer": ["response"],
+      "explanation": "Request and response models are purpose-built structures that cross the boundary instead of entities or ORM objects."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "What should cross an architectural boundary? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A purpose-built request model" },
+        { "id": "b", "text": "A response model" },
+        { "id": "c", "text": "An entity, passed as-is" },
+        { "id": "d", "text": "A raw ORM row" }
+      ],
+      "answer": ["a", "b"],
+      "explanation": "Cross boundaries with plain, dedicated request/response models. Passing entities or ORM rows couples the two sides and can violate the Dependency Rule."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order a full boundary crossing for one feature.",
+      "items": [
+        { "id": "controller", "text": "Controller builds a request model" },
+        { "id": "input", "text": "Calls the input port" },
+        { "id": "interactor", "text": "Interactor runs" },
+        { "id": "output", "text": "Calls the output port with a response model" },
+        { "id": "presenter", "text": "Presenter renders it" }
+      ],
+      "answer": ["controller", "input", "interactor", "output", "presenter"],
+      "explanation": "Control marches from the controller through the input port to the interactor, then out through the output port to the presenter — while dependencies point inward."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its role.",
+      "pairs": [
+        { "left": "Input port", "right": "Interface a use case exposes to be driven" },
+        { "left": "Output port", "right": "Interface a use case calls to report results" },
+        { "left": "Request model", "right": "Plain structure carrying inputs across the boundary" },
+        { "left": "Against the flow", "right": "A crossing where control goes outward" }
+      ],
+      "explanation": "Input/output ports and request/response models are the machinery that lets control cross a boundary while dependencies stay inward."
+    }
+  ]
+}

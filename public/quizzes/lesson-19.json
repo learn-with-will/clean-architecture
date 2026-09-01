@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-19",
+  "lessonId": "lesson-19",
+  "title": "Organizing Modules and Boundaries",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "prompt": "Which mechanisms enforce the Dependency Rule mechanically (so it can't erode)? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Module visibility that hides a component's internals so illegal imports won't compile" },
+        { "id": "b", "text": "A dependency linter that fails the CI build on forbidden imports" },
+        { "id": "c", "text": "Hoping developers remember the rule" },
+        { "id": "d", "text": "Architecture tests (e.g., ArchUnit) asserting allowed dependencies" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Module visibility, dependency linters, and architecture tests make the rule a build gate. Relying on memory or discipline alone is exactly what lets boundaries erode."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is a modular monolith?",
+      "options": [
+        { "id": "a", "text": "Many microservices sharing one database" },
+        { "id": "b", "text": "A single deployable unit with strong, enforced internal module boundaries" },
+        { "id": "c", "text": "A codebase with no boundaries" },
+        { "id": "d", "text": "A framework" }
+      ],
+      "answer": "b",
+      "explanation": "A modular monolith gives much of the changeability of separate services through enforced internal boundaries, without the network and deployment costs."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The same architectural boundary can be implemented at different strengths and later ______ (e.g., source → module → service) as pressure justifies.",
+      "answer": ["upgraded", "strengthened"],
+      "explanation": "Boundary strength is a spectrum; start with the cheapest effective form and upgrade only when a real force appears."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order the boundary forms from weakest/cheapest to strongest/costliest.",
+      "items": [
+        { "id": "source", "text": "Source-level discipline (an interface, a folder rule)" },
+        { "id": "module", "text": "Package/module (compile-enforced)" },
+        { "id": "deploy", "text": "Separately deployed component" },
+        { "id": "service", "text": "Separate service (network process)" }
+      ],
+      "answer": ["source", "module", "deploy", "service"],
+      "explanation": "From cheapest/weakest to strongest/costliest: a source convention, a compile-enforced module, a deployment component, then a separate service."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each packaging strategy to what it groups by.",
+      "pairs": [
+        { "left": "Package by layer", "right": "Technical role (controllers, models, repos)" },
+        { "left": "Package by feature", "right": "Domain capability (billing, accounts)" },
+        { "left": "Package by component", "right": "Encapsulated components with one public entry point" }
+      ],
+      "explanation": "Most Clean Architecture codebases land on by-feature or by-component at the top, layering within a feature."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "A startup splits a small app into eight microservices 'for clean boundaries,' with no scaling or team-autonomy need. What's the likely result?",
+      "options": [
+        { "id": "a", "text": "Ideal architecture" },
+        { "id": "b", "text": "Premature cost: lost local reasoning, coordinated deploys, and distributed debugging that a modular monolith would have avoided" },
+        { "id": "c", "text": "Faster development guaranteed" },
+        { "id": "d", "text": "Automatic decoupling" }
+      ],
+      "answer": "b",
+      "explanation": "They jumped to the strongest, most expensive boundary form without a real force; a modular monolith would have given the same isolation far more cheaply."
+    }
+  ]
+}

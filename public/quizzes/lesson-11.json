@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-11",
+  "lessonId": "lesson-11",
+  "title": "Use-Case Interactors",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the interactor's job relative to entities?",
+      "options": [
+        { "id": "a", "text": "It holds and enforces the domain rules itself" },
+        { "id": "b", "text": "It orchestrates — coordinating steps and collaborators — while entities hold the domain rules" },
+        { "id": "c", "text": "It formats data for the screen" },
+        { "id": "d", "text": "It stores data in the database" }
+      ],
+      "answer": "b",
+      "explanation": "The interactor is a conductor: it orchestrates entities and gateways for one use case, while the entities enforce the actual domain rules."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "What may an interactor depend on? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Entities" },
+        { "id": "b", "text": "Interfaces it owns (gateways, the output boundary)" },
+        { "id": "c", "text": "A web framework's Response object" },
+        { "id": "d", "text": "A concrete ORM model" }
+      ],
+      "answer": ["a", "b"],
+      "explanation": "An interactor depends only inward: on entities and interfaces it owns. Framework objects and ORM models are outer details it must not import."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "An interactor reports its result — success or failure — through an ______ boundary, so it never needs to know about the UI.",
+      "answer": ["output"],
+      "explanation": "The output boundary (output port) is an interface the interactor calls; a presenter implements it and decides how to display the result."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order the parts data flows through in a full interactor.",
+      "items": [
+        { "id": "input", "text": "Input boundary (input port)" },
+        { "id": "request", "text": "Request model" },
+        { "id": "interactor", "text": "Interactor" },
+        { "id": "output", "text": "Output boundary (output port)" },
+        { "id": "response", "text": "Response model" }
+      ],
+      "answer": ["input", "request", "interactor", "output", "response"],
+      "explanation": "A driver calls the input boundary with a request model; the interactor runs and reports via the output boundary with a response model."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each concern to where it belongs.",
+      "pairs": [
+        { "left": "Password strength rule", "right": "Entity (domain invariant)" },
+        { "left": "Uniqueness check ('email taken')", "right": "Interactor (application rule via gateway)" },
+        { "left": "Formatting the result for a screen", "right": "Presenter" },
+        { "left": "Executing SQL", "right": "Gateway" }
+      ],
+      "explanation": "General invariants live in entities; application-specific checks in the interactor; formatting in the presenter; SQL in the gateway."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why is a well-formed interactor easy to unit-test?",
+      "options": [
+        { "id": "a", "text": "Because it imports the test framework directly" },
+        { "id": "b", "text": "Because all its collaborators are interfaces, so tests supply in-memory fakes — no web server or database needed" },
+        { "id": "c", "text": "Because it contains no code" },
+        { "id": "d", "text": "Because it runs only in production" }
+      ],
+      "answer": "b",
+      "explanation": "Since every collaborator is an interface, a test injects in-memory fakes and a capturing output, exercising the rules with no framework or database."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-12",
+  "lessonId": "lesson-12",
+  "title": "Entities and the Domain Model",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "How does an entity differ from a value object?",
+      "options": [
+        { "id": "a", "text": "An entity is immutable; a value object has identity" },
+        { "id": "b", "text": "An entity has a persistent identity (compared by id); a value object has no identity and is compared by its attributes" },
+        { "id": "c", "text": "They are the same thing" },
+        { "id": "d", "text": "An entity lives in the database; a value object lives in the UI" }
+      ],
+      "answer": "b",
+      "explanation": "Entities have identity that persists as attributes change (compared by id); value objects are usually immutable and compared by value."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is an 'anemic domain model,' and why is it often an anti-pattern?",
+      "options": [
+        { "id": "a", "text": "Objects rich with behavior; it's ideal" },
+        { "id": "b", "text": "Data-only objects (getters/setters) with all rules in separate services, so objects can go invalid and logic gets duplicated" },
+        { "id": "c", "text": "A model with too few tables" },
+        { "id": "d", "text": "A model that uses value objects" }
+      ],
+      "answer": "b",
+      "explanation": "When real rules exist, an anemic model (data-only objects + fat services) lets objects reach invalid states and scatters logic. A rich model keeps data and its rules together."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A rule that must always hold for an object to be valid is called an ______, and the entity should protect its own.",
+      "answer": ["invariant"],
+      "explanation": "Entities enforce their invariants by validating on creation and only allowing safe changes, making invalid states unrepresentable."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are true about Clean Architecture's 'Entities layer' vs DDD's 'Entity'? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "DDD's Entity is a specific kind of object (with identity)" },
+        { "id": "b", "text": "Clean's Entities layer is a location holding all enterprise business rules" },
+        { "id": "c", "text": "They are exactly the same term" },
+        { "id": "d", "text": "Clean's Entities layer can include value objects and domain services" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "DDD's Entity is one kind of object; Clean's Entities layer is a place holding enterprise rules, which may include DDD entities, value objects, and domain services. They overlap but aren't identical."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the steps by which an entity keeps itself valid.",
+      "items": [
+        { "id": "validate", "text": "Validate inputs on creation (reject invalid)" },
+        { "id": "construct", "text": "Construct only if valid" },
+        { "id": "mutate", "text": "Allow changes only through safe methods" },
+        { "id": "guard", "text": "Reject any change that would break an invariant" }
+      ],
+      "answer": ["validate", "construct", "mutate", "guard"],
+      "explanation": "Validate on creation, refuse to construct invalid objects, and gate all mutations so invariants always hold."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Classify each as an Entity or a Value Object.",
+      "pairs": [
+        { "left": "Customer (keeps identity as details change)", "right": "Entity" },
+        { "left": "Money($5, USD)", "right": "Value object" },
+        { "left": "Passport (identified by number)", "right": "Entity" },
+        { "left": "Color(#3366FF)", "right": "Value object" }
+      ],
+      "explanation": "Things with continuity/identity are entities; immutable things defined purely by their attributes are value objects."
+    }
+  ]
+}

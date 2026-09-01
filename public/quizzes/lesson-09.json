@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-09",
+  "lessonId": "lesson-09",
+  "title": "Ports and Adapters (Hexagonal)",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Who created Hexagonal Architecture, and what is its other name?",
+      "options": [
+        { "id": "a", "text": "Robert C. Martin; 'Clean Architecture'" },
+        { "id": "b", "text": "Alistair Cockburn; 'Ports and Adapters'" },
+        { "id": "c", "text": "Jeffrey Palermo; 'Onion Architecture'" },
+        { "id": "d", "text": "Eric Evans; 'Domain-Driven Design'" }
+      ],
+      "answer": "b",
+      "explanation": "Alistair Cockburn introduced Hexagonal Architecture, also called Ports and Adapters. It is related to, but distinct from, Clean and Onion."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which of these are PRIMARY (driving) adapters — actors that call INTO the application? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "A web controller handling an HTTP request" },
+        { "id": "b", "text": "A CLI command" },
+        { "id": "c", "text": "An automated test driving a port" },
+        { "id": "d", "text": "The database the application writes to" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Driving/primary adapters initiate action and call into the app (web, CLI, tests). The database is driven by the app, so it is a secondary/driven adapter."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A ______ is an interface the application owns; an adapter is an implementation that connects it to a specific technology.",
+      "answer": ["port", "Port"],
+      "explanation": "Ports are the application-owned interfaces; adapters plug into them from the outside."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "What does the hexagon's six-sided shape signify?",
+      "options": [
+        { "id": "a", "text": "Six mandatory layers" },
+        { "id": "b", "text": "Six ports" },
+        { "id": "c", "text": "Nothing special — it's just room to draw multiple ports on different edges" },
+        { "id": "d", "text": "Six adapters" }
+      ],
+      "answer": "c",
+      "explanation": "Cockburn chose a hexagon only to leave room for several ports and to break the top-to-bottom 'layers' picture. The six sides carry no technical meaning."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Map Hexagonal concepts to their Clean Architecture counterparts.",
+      "pairs": [
+        { "left": "Inside the hexagon", "right": "Use cases + entities" },
+        { "left": "Ports", "right": "Boundary interfaces (input/output, gateways)" },
+        { "left": "Adapters", "right": "The Interface Adapters layer" },
+        { "left": "Driving vs driven", "right": "Controllers (in) vs gateways/presenters (out)" }
+      ],
+      "explanation": "The two approaches map closely, though they are distinct works; Clean Architecture adds explicit layering and component principles."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the flow for a request in a ports-and-adapters system.",
+      "items": [
+        { "id": "driving", "text": "Driving adapter (e.g., web controller)" },
+        { "id": "port_in", "text": "Driving port (into the app)" },
+        { "id": "app", "text": "Application (use case)" },
+        { "id": "port_out", "text": "Driven port (out of the app)" },
+        { "id": "driven", "text": "Driven adapter (e.g., database)" }
+      ],
+      "answer": ["driving", "port_in", "app", "port_out", "driven"],
+      "explanation": "A driving adapter calls a driving port into the app; the app calls out through a driven port to a driven adapter. Both sides use the same ports-and-adapters mechanism."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-21",
+  "lessonId": "lesson-21",
+  "title": "Services and Boundaries",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Is a microservice boundary primarily an architectural or a deployment decision?",
+      "options": [
+        { "id": "a", "text": "Primarily a deployment/operational decision — physical separation doesn't guarantee architectural independence" },
+        { "id": "b", "text": "Primarily an architectural decision that guarantees decoupling" },
+        { "id": "c", "text": "Neither; it's a language choice" },
+        { "id": "d", "text": "It's the same as the Dependency Rule" }
+      ],
+      "answer": "a",
+      "explanation": "A service boundary is about how the system is deployed and operated. Services can still be tightly coupled through shared data and cross-cutting features."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the 'service fallacy'?",
+      "options": [
+        { "id": "a", "text": "That services are always slower than a monolith" },
+        { "id": "b", "text": "The belief that splitting into services automatically yields decoupling and independent development" },
+        { "id": "c", "text": "That microservices can't scale" },
+        { "id": "d", "text": "That services must share a database" }
+      ],
+      "answer": "b",
+      "explanation": "Shared data and cross-cutting features can still force coordinated changes across services, so 'we used microservices' doesn't by itself mean the system is decoupled."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Many services sharing one database and calling each other for every request, so features need coordinated cross-service changes, is derisively called a distributed ______.",
+      "answer": ["monolith"],
+      "explanation": "A distributed monolith has all the costs of services with none of the independence, because shared data and chatty contracts recouple the services."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each decoupling mode to its description.",
+      "pairs": [
+        { "left": "Source-level", "right": "Interfaces within one process" },
+        { "left": "Deployment-level", "right": "Separately deployable units (jars/packages)" },
+        { "left": "Service-level", "right": "Separate processes communicating over a network" }
+      ],
+      "explanation": "A microservice is decoupling pushed to the service level — the strongest and most expensive form of the boundary spectrum."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which are genuine costs that the service level adds over in-process decoupling? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Network latency and partial failure" },
+        { "id": "b", "text": "Distributed data / eventual consistency" },
+        { "id": "c", "text": "Harder debugging, tracing, and testing" },
+        { "id": "d", "text": "Automatic architectural decoupling" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Services add network, consistency, and operational costs. They do NOT provide automatic architectural decoupling — that still requires good design."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the 'monolith-first' steps for arriving at a well-justified service.",
+      "items": [
+        { "id": "build", "text": "Build a modular monolith with clean internal boundaries" },
+        { "id": "force", "text": "Identify a concrete force on one module (e.g., independent scaling)" },
+        { "id": "extract", "text": "Extract that module as a separate service" },
+        { "id": "connect", "text": "Connect it via a driving adapter (endpoint) and its own driven adapter (store)" }
+      ],
+      "answer": ["build", "force", "extract", "connect"],
+      "explanation": "Start with a modular monolith and extract a service only when a real force appears; the extracted service's endpoint becomes a driving adapter and its database a driven adapter, with entities and use cases inside."
+    }
+  ]
+}

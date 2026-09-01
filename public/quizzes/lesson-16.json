@@ -1,0 +1,77 @@
+{
+  "id": "quiz-lesson-16",
+  "lessonId": "lesson-16",
+  "title": "Testing Across Boundaries",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does 'the tests are the outermost circle' mean?",
+      "options": [
+        { "id": "a", "text": "Tests are the most important business rules" },
+        { "id": "b", "text": "Tests are the most peripheral, detailed part: they depend inward on everything, and nothing depends on them" },
+        { "id": "c", "text": "Tests belong in the entities layer" },
+        { "id": "d", "text": "Tests should be written last" }
+      ],
+      "answer": "b",
+      "explanation": "Tests are like another driving adapter — the outermost circle. They depend inward on the system, and nothing depends on them."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "How should you test a business rule quickly and reliably?",
+      "options": [
+        { "id": "a", "text": "Through the real UI end-to-end" },
+        { "id": "b", "text": "By driving the use case's port directly with a request model and in-memory doubles" },
+        { "id": "c", "text": "By connecting to the production database" },
+        { "id": "d", "text": "By reading the logs" }
+      ],
+      "answer": "b",
+      "explanation": "Driving the use-case port with doubles is fast, deterministic, and focused on the rule — no UI, HTTP, or real database involved."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A test that breaks due to changes unrelated to its intent (e.g., coupling to exact SQL or over-specified mock calls) is called a ______ test.",
+      "answer": ["fragile", "brittle"],
+      "explanation": "Fragile tests come from coupling to volatile details; testing through stable boundaries and asserting state keeps tests robust."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each test double to its description.",
+      "pairs": [
+        { "left": "Stub", "right": "Returns canned answers to provide inputs" },
+        { "left": "Fake", "right": "A working but simplified implementation (e.g., in-memory repo)" },
+        { "left": "Mock", "right": "Verifies it was called in an expected way" }
+      ],
+      "explanation": "Stubs feed inputs, fakes are simplified working implementations, and mocks assert interactions. Prefer state-based tests with stubs/fakes over heavy mocking."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the testing pyramid from the widest base (most tests) to the narrow top (fewest).",
+      "items": [
+        { "id": "unit", "text": "Unit tests (use cases/entities with doubles)" },
+        { "id": "integration", "text": "Integration tests (adapters against real tech)" },
+        { "id": "e2e", "text": "End-to-end tests (through the real UI/DB)" }
+      ],
+      "answer": ["unit", "integration", "e2e"],
+      "explanation": "Many fast unit tests form the base, some integration tests in the middle, and few slow end-to-end tests at the top."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "Which are sound testing practices in a clean architecture? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Test use cases at their ports with in-memory fakes" },
+        { "id": "b", "text": "Keep end-to-end tests few and focused on critical paths" },
+        { "id": "c", "text": "Use a real production database for every unit test" },
+        { "id": "d", "text": "Prefer state-based assertions over over-specified mock interactions" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Test rules at ports with fakes, keep e2e tests few, and prefer state assertions. Using a real database for every unit test is slow and non-deterministic, and over-mocking makes tests fragile."
+    }
+  ]
+}

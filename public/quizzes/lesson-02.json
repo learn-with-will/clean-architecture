@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-02",
+  "lessonId": "lesson-02",
+  "title": "Why Architecture Matters",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which cost usually dominates a software system's lifetime?",
+      "options": [
+        { "id": "a", "text": "The cost of writing the first version" },
+        { "id": "b", "text": "The cost of change — modifying the system over time" },
+        { "id": "c", "text": "The cost of the programming language license" },
+        { "id": "d", "text": "The cost of naming the project" }
+      ],
+      "answer": "b",
+      "explanation": "Most of a system's cost is paid after it first works, in the repeated cost of change. Good architecture exists to keep that cost low."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "In Martin's framing, structure/architecture is best described as:",
+      "options": [
+        { "id": "a", "text": "Urgent and important" },
+        { "id": "b", "text": "Important but rarely urgent — so it's easy to neglect" },
+        { "id": "c", "text": "Neither important nor urgent" },
+        { "id": "d", "text": "Urgent but not important" }
+      ],
+      "answer": "b",
+      "explanation": "Behavior feels urgent; structure is important but rarely urgent, so teams that always chase the urgent let structure decay."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Software is called 'soft' because, unlike hardware, it is meant to be easy to ______.",
+      "answer": ["change", "modify"],
+      "explanation": "The word 'software' contrasts with 'hardware': software should be easy to change, and architecture keeps it that way."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which are genuine benefits of investing in architecture? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Keeping options open by deferring decisions" },
+        { "id": "b", "text": "Making each change cheaper and more localized" },
+        { "id": "c", "text": "Guaranteeing the first version ships fastest" },
+        { "id": "d", "text": "Reducing the risk of each change" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "Architecture lowers the cost and risk of change and keeps options open. It does NOT guarantee the fastest first version — that often costs a bit more up front."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these tasks from how urgent stakeholders typically feel them (most urgent first) — the trap that lets structure rot.",
+      "items": [
+        { "id": "bug", "text": "Fix a visible production bug" },
+        { "id": "feature", "text": "Add a requested feature" },
+        { "id": "refactor", "text": "Refactor for better structure" }
+      ],
+      "answer": ["bug", "feature", "refactor"],
+      "explanation": "Behavior (bugs, features) feels most urgent; structural work feels least urgent — which is exactly why it gets neglected even though it's important."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Behavior", "right": "What the software does right now" },
+        { "left": "Structure", "right": "How cheaply the behavior can be changed" },
+        { "left": "Optionality", "right": "The ability to defer or reverse a decision cheaply" },
+        { "left": "Over-engineering", "right": "Paying architecture's cost with no payoff" }
+      ],
+      "explanation": "Behavior is present value; structure governs the cost of change; optionality is deferring decisions; over-engineering is architecture without benefit."
+    }
+  ]
+}

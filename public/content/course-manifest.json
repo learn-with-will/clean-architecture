@@ -1,0 +1,410 @@
+[
+  {
+    "id": "lesson-01",
+    "slug": "what-is-clean-architecture",
+    "title": "What Is Clean Architecture?",
+    "level": "beginner",
+    "order": 1,
+    "duration": 18,
+    "file": "beginner/what-is-clean-architecture.md",
+    "summary": "A plain-language introduction to Clean Architecture — the goal of keeping business logic independent of UI, database, and frameworks, the concentric layers as an illustrative example, the single Dependency Rule that holds it together, and how it relates to (but differs from) Hexagonal and Onion architecture.",
+    "tags": [
+      "foundations",
+      "dependency-rule",
+      "layers",
+      "overview",
+      "independence"
+    ]
+  },
+  {
+    "id": "lesson-02",
+    "slug": "why-architecture-matters",
+    "title": "Why Architecture Matters",
+    "level": "beginner",
+    "order": 2,
+    "duration": 18,
+    "file": "beginner/why-architecture-matters.md",
+    "summary": "Why software architecture is worth the effort — software is meant to be soft, the real cost of a system is in changing it over time, the tension between a program's behavior and its structure, and the honest trade-off that good architecture is an investment, not a free lunch.",
+    "tags": [
+      "foundations",
+      "cost-of-change",
+      "behavior-vs-structure",
+      "maintainability",
+      "trade-offs"
+    ]
+  },
+  {
+    "id": "lesson-03",
+    "slug": "coupling-cohesion-and-dependencies",
+    "title": "Coupling, Cohesion, and Dependencies",
+    "level": "beginner",
+    "order": 3,
+    "duration": 20,
+    "file": "beginner/coupling-cohesion-and-dependencies.md",
+    "summary": "The vocabulary the rest of the course rests on — what a dependency is (and why source-code dependencies differ from runtime calls), tight versus loose coupling, high versus low cohesion, stable versus volatile modules, and why the direction of dependencies is the single most important thing architecture controls.",
+    "tags": [
+      "coupling",
+      "cohesion",
+      "dependencies",
+      "direction",
+      "foundations"
+    ]
+  },
+  {
+    "id": "lesson-04",
+    "slug": "solid-principles-overview",
+    "title": "The SOLID Principles",
+    "level": "beginner",
+    "order": 4,
+    "duration": 20,
+    "file": "beginner/solid-principles-overview.md",
+    "summary": "A beginner's tour of the five SOLID principles that underpin Clean Architecture — Single Responsibility (one reason to change), Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion — with correct attributions and the common misreadings to avoid, especially of SRP.",
+    "tags": [
+      "solid",
+      "srp",
+      "ocp",
+      "lsp",
+      "principles"
+    ]
+  },
+  {
+    "id": "lesson-05",
+    "slug": "dependency-inversion-principle",
+    "title": "The Dependency Inversion Principle",
+    "level": "beginner",
+    "order": 5,
+    "duration": 22,
+    "file": "beginner/dependency-inversion-principle.md",
+    "summary": "The principle Clean Architecture leans on most — depend on abstractions, not on concretions — and the careful distinction between DIP (a design principle), Dependency Injection (a technique), and Inversion of Control (a broad idea), which are constantly and wrongly used as synonyms.",
+    "tags": [
+      "dip",
+      "dependency-injection",
+      "inversion-of-control",
+      "abstractions",
+      "boundaries"
+    ]
+  },
+  {
+    "id": "lesson-06",
+    "slug": "the-dependency-rule",
+    "title": "The Dependency Rule",
+    "level": "beginner",
+    "order": 6,
+    "duration": 20,
+    "file": "beginner/the-dependency-rule.md",
+    "summary": "A close look at the single rule that defines Clean Architecture — source-code dependencies point only inward — including the crucial distinction from the runtime flow of control, what may cross a boundary (simple data structures, never entities or details), and how the levels of a system are ordered.",
+    "tags": [
+      "dependency-rule",
+      "boundaries",
+      "flow-of-control",
+      "layers",
+      "dtos"
+    ]
+  },
+  {
+    "id": "lesson-07",
+    "slug": "entities-and-use-cases",
+    "title": "Entities and Use Cases",
+    "level": "beginner",
+    "order": 7,
+    "duration": 20,
+    "file": "beginner/entities-and-use-cases.md",
+    "summary": "The two innermost layers — Entities holding enterprise business rules that would exist even without the application, and Use Cases (interactors) holding application-specific rules that orchestrate entities to fulfill a user's goal — and how to tell which of the two a given rule belongs to.",
+    "tags": [
+      "entities",
+      "use-cases",
+      "business-rules",
+      "interactors",
+      "layers"
+    ]
+  },
+  {
+    "id": "lesson-08",
+    "slug": "interface-adapters-and-frameworks",
+    "title": "Interface Adapters and Frameworks",
+    "level": "beginner",
+    "order": 8,
+    "duration": 20,
+    "file": "beginner/interface-adapters-and-frameworks.md",
+    "summary": "The two outer layers — Interface Adapters (controllers, presenters, and gateways) whose job is to convert data between the form use cases like and the form the outside world likes, and Frameworks & Drivers (web, database, UI, devices) which are the volatile details kept at arm's length.",
+    "tags": [
+      "interface-adapters",
+      "controllers",
+      "presenters",
+      "gateways",
+      "frameworks"
+    ]
+  },
+  {
+    "id": "lesson-09",
+    "slug": "ports-and-adapters-hexagonal",
+    "title": "Ports and Adapters (Hexagonal)",
+    "level": "intermediate",
+    "order": 9,
+    "duration": 22,
+    "file": "intermediate/ports-and-adapters-hexagonal.md",
+    "summary": "Alistair Cockburn's Hexagonal Architecture, also called Ports and Adapters — the application inside a hexagon exposing ports (interfaces) that adapters plug into, the distinction between primary/driving and secondary/driven sides, and how this relates to (but is not identical to) Clean Architecture.",
+    "tags": [
+      "hexagonal",
+      "ports",
+      "adapters",
+      "cockburn",
+      "boundaries"
+    ]
+  },
+  {
+    "id": "lesson-10",
+    "slug": "crossing-boundaries",
+    "title": "Crossing Boundaries",
+    "level": "intermediate",
+    "order": 10,
+    "duration": 22,
+    "file": "intermediate/crossing-boundaries.md",
+    "summary": "The mechanics of an architectural boundary crossing — input and output ports as the interfaces control passes through, request and response models as the data that crosses, and how dependency inversion lets the flow of control cross a boundary in the opposite direction to the source-code dependency.",
+    "tags": [
+      "boundaries",
+      "input-output-ports",
+      "request-response-models",
+      "flow-of-control",
+      "dtos"
+    ]
+  },
+  {
+    "id": "lesson-11",
+    "slug": "use-case-interactors",
+    "title": "Use-Case Interactors",
+    "level": "intermediate",
+    "order": 11,
+    "duration": 22,
+    "file": "intermediate/use-case-interactors.md",
+    "summary": "How to actually write a use case — the interactor at the center, its input boundary and request model, the entities and gateway interfaces it orchestrates, and its output boundary and response model — built end-to-end for one feature and kept entirely free of frameworks so it can be tested in isolation.",
+    "tags": [
+      "interactors",
+      "use-cases",
+      "request-response",
+      "orchestration",
+      "testability"
+    ]
+  },
+  {
+    "id": "lesson-12",
+    "slug": "entities-and-domain-model",
+    "title": "Entities and the Domain Model",
+    "level": "intermediate",
+    "order": 12,
+    "duration": 22,
+    "file": "intermediate/entities-and-domain-model.md",
+    "summary": "Designing the innermost layer well — entities that protect their own invariants, value objects defined by their attributes rather than identity, the difference between a rich and an anemic domain model, and how Clean Architecture's Entities layer relates to (but isn't the same vocabulary as) Domain-Driven Design.",
+    "tags": [
+      "entities",
+      "value-objects",
+      "invariants",
+      "domain-model",
+      "ddd"
+    ]
+  },
+  {
+    "id": "lesson-13",
+    "slug": "dependency-injection-and-wiring",
+    "title": "Dependency Injection and Wiring",
+    "level": "intermediate",
+    "order": 13,
+    "duration": 20,
+    "file": "intermediate/dependency-injection-and-wiring.md",
+    "summary": "Where all the concrete pieces get connected — the Main component or composition root as the outermost, most detailed part of the system that instantiates implementations and injects them into the abstractions that need them, why nothing should depend on it, and how manual wiring compares to a DI container.",
+    "tags": [
+      "dependency-injection",
+      "composition-root",
+      "main-component",
+      "wiring",
+      "containers"
+    ]
+  },
+  {
+    "id": "lesson-14",
+    "slug": "gateways-and-persistence",
+    "title": "Gateways and Persistence",
+    "level": "intermediate",
+    "order": 14,
+    "duration": 22,
+    "file": "intermediate/gateways-and-persistence.md",
+    "summary": "Treating the database as a replaceable detail — the repository (gateway) interface owned by the use-case layer and implemented by an outer adapter, mapping between domain objects and storage rows, why SQL and ORM code stay at the edge, and why the database schema must not be allowed to dictate the domain model.",
+    "tags": [
+      "repository",
+      "gateways",
+      "persistence",
+      "database-detail",
+      "mapping"
+    ]
+  },
+  {
+    "id": "lesson-15",
+    "slug": "presenters-and-the-ui",
+    "title": "Presenters and the UI",
+    "level": "intermediate",
+    "order": 15,
+    "duration": 20,
+    "file": "intermediate/presenters-and-the-ui.md",
+    "summary": "Keeping the user interface at the edge — presenters that turn a use case's response into a logic-free view model, the Humble Object pattern that isolates the hard-to-test view from testable presentation logic, and why the UI (like the database) is a detail the core must not depend on.",
+    "tags": [
+      "presenters",
+      "view-model",
+      "humble-object",
+      "ui-detail",
+      "mvc"
+    ]
+  },
+  {
+    "id": "lesson-16",
+    "slug": "testing-across-boundaries",
+    "title": "Testing Across Boundaries",
+    "level": "intermediate",
+    "order": 16,
+    "duration": 22,
+    "file": "intermediate/testing-across-boundaries.md",
+    "summary": "Why a clean architecture is a testable one — testing use cases against in-memory doubles at their ports instead of through the UI or database, the testing pyramid, the kinds of test double and when to use each, and how to avoid fragile tests coupled to volatile details.",
+    "tags": [
+      "testing",
+      "test-doubles",
+      "testing-pyramid",
+      "testability",
+      "fragile-tests"
+    ]
+  },
+  {
+    "id": "lesson-17",
+    "slug": "screaming-architecture",
+    "title": "Screaming Architecture",
+    "level": "advanced",
+    "order": 17,
+    "duration": 20,
+    "file": "advanced/screaming-architecture.md",
+    "summary": "The idea that a system's top-level structure should shout what it does — an accounting system, a health-care system — rather than which framework it uses, achieved by organizing code around use cases and the domain instead of technical layers, while remembering it does not mean avoiding frameworks.",
+    "tags": [
+      "screaming-architecture",
+      "intent",
+      "packaging",
+      "use-case-centric",
+      "frameworks"
+    ]
+  },
+  {
+    "id": "lesson-18",
+    "slug": "component-principles",
+    "title": "Component Cohesion and Coupling",
+    "level": "advanced",
+    "order": 18,
+    "duration": 24,
+    "file": "advanced/component-principles.md",
+    "summary": "Scaling the design principles up to components — the three cohesion principles (REP, CCP, CRP) that decide which classes belong together, the three coupling principles (ADP, SDP, SAP) that govern dependencies between components, and the stability and abstractness metrics behind the Main Sequence.",
+    "tags": [
+      "components",
+      "cohesion",
+      "coupling",
+      "stability",
+      "main-sequence"
+    ]
+  },
+  {
+    "id": "lesson-19",
+    "slug": "organizing-modules-and-boundaries",
+    "title": "Organizing Modules and Boundaries",
+    "level": "advanced",
+    "order": 19,
+    "duration": 22,
+    "file": "advanced/organizing-modules-and-boundaries.md",
+    "summary": "How boundaries actually take shape in a codebase — the packaging choices (by layer, feature, or component), the spectrum from a source-level boundary to a package to a separate service, and how to enforce the Dependency Rule with module systems and lint tools so boundaries don't quietly erode.",
+    "tags": [
+      "modules",
+      "packaging",
+      "enforcement",
+      "modular-monolith",
+      "boundaries"
+    ]
+  },
+  {
+    "id": "lesson-20",
+    "slug": "partial-and-evolving-boundaries",
+    "title": "Partial and Evolving Boundaries",
+    "level": "advanced",
+    "order": 20,
+    "duration": 22,
+    "file": "advanced/partial-and-evolving-boundaries.md",
+    "summary": "Boundaries cost something, so you shouldn't build all of them fully — the partial-boundary techniques (skip the last step, one-dimensional boundaries, and facades) that leave a seam without the full price, plus the architect's ongoing judgment of which boundaries to implement, defer, or ignore.",
+    "tags": [
+      "partial-boundaries",
+      "yagni",
+      "deferring-decisions",
+      "cost-benefit",
+      "over-engineering"
+    ]
+  },
+  {
+    "id": "lesson-21",
+    "slug": "microservices-and-boundaries",
+    "title": "Services and Boundaries",
+    "level": "advanced",
+    "order": 21,
+    "duration": 22,
+    "file": "advanced/microservices-and-boundaries.md",
+    "summary": "How services relate to architecture — the three decoupling modes (source, deployment, service), why a service boundary is a deployment decision rather than an automatic architecture, the fallacy that splitting into microservices decouples by itself, and why each service still needs Clean Architecture inside it.",
+    "tags": [
+      "microservices",
+      "decoupling-modes",
+      "distributed",
+      "boundaries",
+      "fallacy"
+    ]
+  },
+  {
+    "id": "lesson-22",
+    "slug": "frameworks-and-details",
+    "title": "Frameworks and Databases as Details",
+    "level": "advanced",
+    "order": 22,
+    "duration": 20,
+    "file": "advanced/frameworks-and-details.md",
+    "summary": "Why frameworks, databases, and the web are details to keep at the edge — the asymmetric bargain a framework offers, the risks of coupling your core to it, the strategy of using a framework from the outer ring behind your own abstractions, and how to couple knowingly when you must.",
+    "tags": [
+      "frameworks",
+      "details",
+      "coupling",
+      "dont-marry-the-framework",
+      "edge"
+    ]
+  },
+  {
+    "id": "lesson-23",
+    "slug": "pitfalls-and-tradeoffs",
+    "title": "Pitfalls and Trade-offs",
+    "level": "advanced",
+    "order": 23,
+    "duration": 22,
+    "file": "advanced/pitfalls-and-tradeoffs.md",
+    "summary": "An honest look at where Clean Architecture goes wrong in practice — over-abstraction and astronaut architecture, leaking entities and anemic use cases, mapping overhead, and treating the rules as dogma — plus when a simpler design is the right call and how to match architectural investment to a system's stakes.",
+    "tags": [
+      "anti-patterns",
+      "over-engineering",
+      "yagni",
+      "tradeoffs",
+      "judgment"
+    ]
+  },
+  {
+    "id": "lesson-24",
+    "slug": "capstone-end-to-end",
+    "title": "Capstone: A System End to End",
+    "level": "advanced",
+    "order": 24,
+    "duration": 24,
+    "file": "advanced/capstone-end-to-end.md",
+    "summary": "A full walk through one small feature applying every principle in the course — entities enforcing rules, a use-case interactor behind input and output ports, gateway and presenter adapters, wiring at the composition root, and a boundary test — followed by a recap of the whole architecture and where to go next.",
+    "tags": [
+      "capstone",
+      "end-to-end",
+      "composition-root",
+      "review",
+      "practice"
+    ]
+  }
+]

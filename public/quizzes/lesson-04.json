@@ -1,0 +1,81 @@
+{
+  "id": "quiz-lesson-04",
+  "lessonId": "lesson-04",
+  "title": "The SOLID Principles",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which statement of the Single Responsibility Principle (SRP) is correct?",
+      "options": [
+        { "id": "a", "text": "A function should do only one thing" },
+        { "id": "b", "text": "A module should have one reason to change — be responsible to one actor" },
+        { "id": "c", "text": "A class should have only one method" },
+        { "id": "d", "text": "A file should contain only one class" }
+      ],
+      "answer": "b",
+      "explanation": "SRP is about having a single reason to change / responsibility to one actor. 'Do one thing' is a common misquote."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "The Liskov Substitution Principle is named after Barbara Liskov and requires that:",
+      "options": [
+        { "id": "a", "text": "Subtypes must be substitutable for their base types without breaking callers" },
+        { "id": "b", "text": "Every class must have a base class" },
+        { "id": "c", "text": "Interfaces must be small" },
+        { "id": "d", "text": "High-level modules depend on abstractions" }
+      ],
+      "answer": "a",
+      "explanation": "LSP (Barbara Liskov) is about substitutability: code using a base type must keep working with any subtype. Small interfaces are ISP; depending on abstractions is DIP."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The Open-Closed Principle says software should be open for extension but ______ for modification.",
+      "answer": ["closed"],
+      "explanation": "OCP: add new behavior by adding code, not by modifying existing, depended-on code."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each SOLID letter to its principle.",
+      "pairs": [
+        { "left": "S", "right": "Single Responsibility (one reason to change)" },
+        { "left": "O", "right": "Open-Closed (extend without modifying)" },
+        { "left": "L", "right": "Liskov Substitution (subtypes substitutable)" },
+        { "left": "I", "right": "Interface Segregation (no fat interfaces)" },
+        { "left": "D", "right": "Dependency Inversion (depend on abstractions)" }
+      ],
+      "explanation": "SOLID = SRP, OCP, LSP, ISP, DIP. Clean Architecture applies these at the scale of components and layers."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the SOLID principles as the acronym spells them.",
+      "items": [
+        { "id": "srp", "text": "Single Responsibility" },
+        { "id": "ocp", "text": "Open-Closed" },
+        { "id": "lsp", "text": "Liskov Substitution" },
+        { "id": "isp", "text": "Interface Segregation" },
+        { "id": "dip", "text": "Dependency Inversion" }
+      ],
+      "answer": ["srp", "ocp", "lsp", "isp", "dip"],
+      "explanation": "S-O-L-I-D: Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, Dependency Inversion."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "Which statements about the Interface Segregation Principle (ISP) are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Don't force clients to depend on methods they don't use" },
+        { "id": "b", "text": "Prefer several small, focused interfaces over one fat interface" },
+        { "id": "c", "text": "Every class must implement every interface" },
+        { "id": "d", "text": "A client depending on a fat interface can be forced to recompile when unrelated methods change" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "ISP argues against fat interfaces because clients get coupled to methods they never call, spreading unrelated changes. Requiring every class to implement every interface is not ISP."
+    }
+  ]
+}

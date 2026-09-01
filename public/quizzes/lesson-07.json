@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-07",
+  "lessonId": "lesson-07",
+  "title": "Entities and Use Cases",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is a good test for whether a rule belongs in an Entity?",
+      "options": [
+        { "id": "a", "text": "Whether it involves the database" },
+        { "id": "b", "text": "Whether the rule would still exist if this application were never built" },
+        { "id": "c", "text": "Whether it is triggered by an HTTP request" },
+        { "id": "d", "text": "Whether it formats data for the screen" }
+      ],
+      "answer": "b",
+      "explanation": "Entities hold enterprise business rules — general rules that would hold even without this app (on paper or in another system). App-specific orchestration belongs in use cases."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which things must a use case NOT know about? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Who or what triggered it (web, CLI, job)" },
+        { "id": "b", "text": "Where its data is stored (the database/ORM)" },
+        { "id": "c", "text": "How its results are presented (the UI)" },
+        { "id": "d", "text": "The entities it orchestrates" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "A use case is ignorant of its caller, its storage, and its presentation. It DOES know the entities it orchestrates (an inward dependency)."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Another common name for a use case is an ______.",
+      "answer": ["interactor"],
+      "explanation": "A use case is implemented by an interactor, which orchestrates entities to fulfill one user goal."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each rule to whether it's an Entity rule or a Use Case.",
+      "pairs": [
+        { "left": "An order's total is the sum of its line items minus discounts", "right": "Entity (enterprise rule)" },
+        { "left": "Placing an order: validate cart, reserve stock, charge, confirm", "right": "Use Case (application rule)" },
+        { "left": "A coupon can't be applied twice to the same order", "right": "Entity (enterprise rule)" },
+        { "left": "On checkout, email a receipt and enqueue fulfillment", "right": "Use Case (application rule)" }
+      ],
+      "explanation": "General rules that hold regardless of the app are entity rules; app-specific workflows that orchestrate them are use cases."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these by level, from the innermost (most stable) outward.",
+      "items": [
+        { "id": "entity", "text": "Entity (enterprise business rules)" },
+        { "id": "usecase", "text": "Use case (application business rules)" },
+        { "id": "controller", "text": "Controller (interface adapter)" },
+        { "id": "framework", "text": "Web framework" }
+      ],
+      "answer": ["entity", "usecase", "controller", "framework"],
+      "explanation": "Stability decreases outward: entities change least, then use cases, then adapters, then frameworks."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why must entities be free of ORM/framework code?",
+      "options": [
+        { "id": "a", "text": "It would make the innermost layer depend on an outer detail, violating the Dependency Rule" },
+        { "id": "b", "text": "ORMs are always slow" },
+        { "id": "c", "text": "Entities can't have methods" },
+        { "id": "d", "text": "It would make the entities layer the outermost ring" }
+      ],
+      "answer": "a",
+      "explanation": "Putting an ORM/framework into an entity makes the most stable, innermost code depend on a volatile outer detail — the exact violation the architecture prevents."
+    }
+  ]
+}

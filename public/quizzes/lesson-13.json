@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-13",
+  "lessonId": "lesson-13",
+  "title": "Dependency Injection and Wiring",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is special about the Main component's dependencies?",
+      "options": [
+        { "id": "a", "text": "Everything depends on Main" },
+        { "id": "b", "text": "Main depends on everything, but nothing depends on Main" },
+        { "id": "c", "text": "Main depends on nothing and nothing depends on it" },
+        { "id": "d", "text": "Main is an entity" }
+      ],
+      "answer": "b",
+      "explanation": "Main is the outermost, dirtiest module: it depends on everything and is depended on by nothing, so its concrete knowledge is quarantined."
+    },
+    {
+      "id": "q2",
+      "type": "multiple-choice",
+      "prompt": "Which statements about the composition root and Main are TRUE? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "It is the place where the `new` keyword for volatile concretions belongs" },
+        { "id": "b", "text": "Nothing else in the system depends on Main" },
+        { "id": "c", "text": "Inner layers should construct their own volatile dependencies with `new`" },
+        { "id": "d", "text": "Constructor injection is the preferred way to supply dependencies" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "The composition root constructs concretions and Main is depended on by nothing; constructor injection is preferred. Inner layers should receive collaborators by injection, not construct volatile ones themselves."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The single place that constructs concrete implementations and injects them into abstractions is called the ______ root.",
+      "answer": ["composition", "Composition"],
+      "explanation": "The composition root, usually near the program's entry point, wires the object graph."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "Does using a DI container guarantee you are following the Dependency Inversion Principle?",
+      "options": [
+        { "id": "a", "text": "Yes — that's what containers are for" },
+        { "id": "b", "text": "No — if inner code still imports concretions, DIP is violated regardless of how objects are built" },
+        { "id": "c", "text": "Yes — as long as the container is popular" },
+        { "id": "d", "text": "Only in statically typed languages" }
+      ],
+      "answer": "b",
+      "explanation": "A container only constructs objects. DIP is about what you depend on in source; importing concretions violates it even with a container."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each injection style or tool to its description.",
+      "pairs": [
+        { "left": "Constructor injection", "right": "Dependencies as required constructor parameters (preferred)" },
+        { "left": "Setter injection", "right": "Dependencies set after construction (risks half-built objects)" },
+        { "left": "DI container", "right": "A library that builds the object graph from registered mappings" },
+        { "left": "Composition root", "right": "The one place concretions are wired to abstractions" }
+      ],
+      "explanation": "Prefer constructor injection; a container is optional tooling; the composition root centralizes wiring."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the construction steps in a composition root.",
+      "items": [
+        { "id": "config", "text": "Load configuration" },
+        { "id": "adapters", "text": "Construct concrete driven adapters (gateways, mailer)" },
+        { "id": "usecases", "text": "Construct use cases, injecting the interfaces" },
+        { "id": "controllers", "text": "Construct driving adapters (controllers) with the use cases" }
+      ],
+      "answer": ["config", "adapters", "usecases", "controllers"],
+      "explanation": "You build outward-to-inward-to-outward: config, then concrete driven adapters, inject them into use cases, then wire controllers to those use cases."
+    }
+  ]
+}

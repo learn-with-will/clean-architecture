@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-08",
+  "lessonId": "lesson-08",
+  "title": "Interface Adapters and Frameworks",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What is the single job of the Interface Adapters layer?",
+      "options": [
+        { "id": "a", "text": "To hold the enterprise business rules" },
+        { "id": "b", "text": "To convert data between the inner (use-case/entity) form and the outer (web/DB/UI) form" },
+        { "id": "c", "text": "To store data permanently" },
+        { "id": "d", "text": "To orchestrate use cases" }
+      ],
+      "answer": "b",
+      "explanation": "Interface Adapters are a two-way translation membrane, converting data between the form use cases like and the form external agencies like."
+    },
+    {
+      "id": "q2",
+      "type": "match-pair",
+      "prompt": "Match each adapter to what it converts.",
+      "pairs": [
+        { "left": "Controller", "right": "External input → a use-case request model" },
+        { "left": "Presenter", "right": "A use-case response model → a view model" },
+        { "left": "Gateway", "right": "Entities ⇄ an external store (rows/documents)" }
+      ],
+      "explanation": "Controllers take input in, presenters format output out, and gateways translate between entities and storage."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "SQL and ORM code belong in a ______ (the repository implementation), never in a use case or entity.",
+      "answer": ["gateway", "Gateway"],
+      "explanation": "Gateways in the Interface Adapters layer are the only place database code lives."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which statements about the Frameworks & Drivers layer are true? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "It contains volatile details like the web framework, database, and UI" },
+        { "id": "b", "text": "You should write as little code there as possible — mostly glue and config" },
+        { "id": "c", "text": "It is where business rules should live" },
+        { "id": "d", "text": "It is kept at arm's length so it stays replaceable" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "The outer ring holds replaceable details with minimal code. Business rules must NOT live there."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the components a request passes through, from the outside in and back out.",
+      "items": [
+        { "id": "controller", "text": "Controller (request in)" },
+        { "id": "usecase", "text": "Use case" },
+        { "id": "gateway", "text": "Gateway (⇄ database)" },
+        { "id": "presenter", "text": "Presenter (result out)" },
+        { "id": "view", "text": "Humble view" }
+      ],
+      "answer": ["controller", "usecase", "gateway", "presenter", "view"],
+      "explanation": "Control enters at the controller, runs the use case (which uses a gateway), then the presenter formats a view model the humble view renders."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Why keep controllers thin (no business rules)?",
+      "options": [
+        { "id": "a", "text": "So business rules stay in use cases (reusable across delivery mechanisms) and the framework stays swappable" },
+        { "id": "b", "text": "Because controllers cannot contain code" },
+        { "id": "c", "text": "So the database can be the core of the system" },
+        { "id": "d", "text": "Because presenters require it by law" }
+      ],
+      "answer": "a",
+      "explanation": "A fat controller traps rules in the web framework, killing reuse (e.g., by a CLI or job) and coupling logic to the framework."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-17",
+  "lessonId": "lesson-17",
+  "title": "Screaming Architecture",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "According to Screaming Architecture, what should a system's top-level structure 'scream'?",
+      "options": [
+        { "id": "a", "text": "Which web framework it uses" },
+        { "id": "b", "text": "What the system is for — its use cases and domain" },
+        { "id": "c", "text": "Which database it uses" },
+        { "id": "d", "text": "The programming language" }
+      ],
+      "answer": "b",
+      "explanation": "The loudest thing about the structure should be the system's purpose (e.g., 'health-care system'), not the framework, which is a delivery detail."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Does Screaming Architecture mean you should avoid frameworks?",
+      "options": [
+        { "id": "a", "text": "Yes — remove all frameworks" },
+        { "id": "b", "text": "No — it means don't let the framework be the organizing principle; keep it an outer, replaceable detail" },
+        { "id": "c", "text": "Yes — hand-roll everything the framework does" },
+        { "id": "d", "text": "No — because frameworks belong in the entities layer" }
+      ],
+      "answer": "b",
+      "explanation": "It's about organizing around intent and keeping the framework at the edge — not about discarding frameworks."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "Organizing top-level folders by domain capability (billing/, accounts/) rather than technical role is called package-by-______.",
+      "answer": ["feature"],
+      "explanation": "Package-by-feature groups a capability's parts together and screams the domain; package-by-layer scatters features and screams the framework."
+    },
+    {
+      "id": "q4",
+      "type": "ordering",
+      "prompt": "Order the steps to refactor a top-level structure from package-by-layer to an intent-revealing package-by-feature.",
+      "items": [
+        { "id": "identify", "text": "Identify a domain capability (e.g., 'billing')" },
+        { "id": "gather", "text": "Gather its use cases, entity, gateway, and adapter into one folder" },
+        { "id": "expose", "text": "Expose a single public entry point for the feature" },
+        { "id": "enforce", "text": "Add a lint rule enforcing the feature's boundary" }
+      ],
+      "answer": ["identify", "gather", "expose", "enforce"],
+      "explanation": "Group each capability's parts together behind one entry point and enforce the boundary, so the structure screams the domain rather than the framework."
+    },
+    {
+      "id": "q5",
+      "type": "match-pair",
+      "prompt": "Match each term to its meaning.",
+      "pairs": [
+        { "left": "Delivery mechanism", "right": "The framework/UI used to deliver the app — a detail" },
+        { "left": "Package-by-layer", "right": "Grouping by technical role; screams the framework" },
+        { "left": "Package-by-feature", "right": "Grouping by capability; screams the domain" },
+        { "left": "Intent-revealing structure", "right": "A layout that documents what the system does" }
+      ],
+      "explanation": "Screaming Architecture favors intent-revealing, feature-based structure with the delivery mechanism kept as an outer detail."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "Which are benefits of an intent-revealing, package-by-feature structure? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Developers can find and change a capability quickly" },
+        { "id": "b", "text": "A feature's parts stay cohesive and close together" },
+        { "id": "c", "text": "The framework decision stays visible at the edge and replaceable" },
+        { "id": "d", "text": "It forces you to hand-code routing and serialization" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Feature-based structure aids navigation, cohesion, and keeping the framework a replaceable detail. It does not require replacing what frameworks provide."
+    }
+  ]
+}

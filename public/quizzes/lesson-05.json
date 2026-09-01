@@ -1,0 +1,78 @@
+{
+  "id": "quiz-lesson-05",
+  "lessonId": "lesson-05",
+  "title": "The Dependency Inversion Principle",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Which best states the Dependency Inversion Principle (DIP)?",
+      "options": [
+        { "id": "a", "text": "High-level modules should depend on low-level modules" },
+        { "id": "b", "text": "High-level and low-level modules should both depend on abstractions; details depend on abstractions, not vice versa" },
+        { "id": "c", "text": "You should use a dependency-injection container" },
+        { "id": "d", "text": "Control should be inverted to the framework" }
+      ],
+      "answer": "b",
+      "explanation": "DIP is about the direction of dependencies: both high- and low-level code depend on abstractions. Using a container is DI/IoC tooling, not the principle."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "A web framework calls your route handler when a request arrives. Which idea is that primarily an example of?",
+      "options": [
+        { "id": "a", "text": "Inversion of Control (IoC)" },
+        { "id": "b", "text": "The Dependency Inversion Principle" },
+        { "id": "c", "text": "The Single Responsibility Principle" },
+        { "id": "d", "text": "A value object" }
+      ],
+      "answer": "a",
+      "explanation": "The framework controlling when your code runs ('don't call us, we'll call you') is Inversion of Control. It is not, by itself, DIP or DI."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "In DIP, the abstraction (interface) should be owned by the high-level ______, not by the low-level detail.",
+      "answer": ["policy", "client", "module"],
+      "explanation": "The client/policy owns the interface it needs; the detail implements it, so the source-code dependency points inward."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each term to its precise description.",
+      "pairs": [
+        { "left": "DIP", "right": "A design principle: depend on abstractions, not concretions" },
+        { "left": "Dependency Injection", "right": "A technique: supply a component's dependencies from outside" },
+        { "left": "Inversion of Control", "right": "A broad idea: a framework/runtime controls the flow" }
+      ],
+      "explanation": "DIP is the goal, DI is a technique that helps reach it, and IoC is the wider family DI belongs to. They are related but not synonyms."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the steps to invert a dependency from policy → detail into a compliant design.",
+      "items": [
+        { "id": "identify", "text": "Identify the volatile detail the policy calls" },
+        { "id": "declare", "text": "Declare an interface owned by the policy" },
+        { "id": "implement", "text": "Have the detail implement that interface" },
+        { "id": "inject", "text": "Inject the implementation at the composition root" }
+      ],
+      "answer": ["identify", "declare", "implement", "inject"],
+      "explanation": "You define an interface the policy owns, implement it in the detail (flipping the source dependency inward), and supply the concrete via injection."
+    },
+    {
+      "id": "q6",
+      "type": "multiple-choice",
+      "prompt": "Which statements are TRUE about DIP, DI, and IoC? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "DIP is a design principle about depending on abstractions rather than concretions" },
+        { "id": "b", "text": "Dependency Injection is a technique for supplying a component's dependencies from outside" },
+        { "id": "c", "text": "Using a DI/IoC container guarantees you are following DIP" },
+        { "id": "d", "text": "You can follow DIP with no framework at all, just by passing arguments" }
+      ],
+      "answer": ["a", "b", "d"],
+      "explanation": "DIP is the principle, DI is a technique that helps achieve it, and both are distinct from IoC. A container only delivers objects — if inner code still imports concretions, DIP is violated regardless."
+    }
+  ]
+}

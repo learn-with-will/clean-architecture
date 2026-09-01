@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-14",
+  "lessonId": "lesson-14",
+  "title": "Gateways and Persistence",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "Who owns the repository interface, and who implements it?",
+      "options": [
+        { "id": "a", "text": "The database owns it; the use case implements it" },
+        { "id": "b", "text": "The use-case layer owns it (in domain terms); an outer gateway adapter implements it with the actual database code" },
+        { "id": "c", "text": "The framework owns and implements it" },
+        { "id": "d", "text": "Entities own and implement it" }
+      ],
+      "answer": "b",
+      "explanation": "The inner use-case layer owns the repository interface phrased in domain terms; the outer gateway implements it and is the only place SQL/ORM lives."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What does 'the database is a detail' mean?",
+      "options": [
+        { "id": "a", "text": "Databases are unimportant and should be avoided" },
+        { "id": "b", "text": "Storage is an outer, replaceable concern the business rules shouldn't depend on, and its choice can be deferred and changed" },
+        { "id": "c", "text": "The database is the core of the system" },
+        { "id": "d", "text": "You must use a NoSQL database" }
+      ],
+      "answer": "b",
+      "explanation": "The database is a tool for storing and retrieving data — an outer detail. Business rules shouldn't know or care which database is used."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The pattern where a class is BOTH a domain object and its own database row (with .save() on it) — coupling the domain to the DB — is called ______ ______.",
+      "answer": ["Active Record", "active record"],
+      "explanation": "Active Record fuses the domain to the database. Clean Architecture prefers the Data Mapper style, where domain objects are persistence-ignorant."
+    },
+    {
+      "id": "q4",
+      "type": "match-pair",
+      "prompt": "Match each persistence term to its description.",
+      "pairs": [
+        { "left": "Repository / gateway", "right": "An interface owned by the use-case layer, phrased in domain terms" },
+        { "left": "Data Mapper", "right": "Moves data between domain objects and the database, keeping them independent" },
+        { "left": "Active Record", "right": "A class that is both a domain object and its own database row" },
+        { "left": "Persistence-ignorant", "right": "A domain object with no knowledge of how it is stored" }
+      ],
+      "explanation": "Clean Architecture prefers Data Mapper with persistence-ignorant domain objects behind a repository interface, rather than Active Record, which couples the domain to the database."
+    },
+    {
+      "id": "q5",
+      "type": "multiple-choice",
+      "prompt": "Which belong in the gateway rather than in a use case or entity? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "SQL queries" },
+        { "id": "b", "text": "ORM calls" },
+        { "id": "c", "text": "Mapping rows to domain objects" },
+        { "id": "d", "text": "The enterprise business rule the entity enforces" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "SQL, ORM calls, and row↔object mapping all live in the gateway. The business rule stays in the entity."
+    },
+    {
+      "id": "q6",
+      "type": "ordering",
+      "prompt": "Order the steps a gateway takes to save an entity to a SQL database.",
+      "items": [
+        { "id": "receive", "text": "Receive the domain object via the repository interface" },
+        { "id": "map", "text": "Map the domain object to a storage row" },
+        { "id": "exec", "text": "Execute the INSERT/UPDATE" },
+        { "id": "return", "text": "Return control to the use case" }
+      ],
+      "answer": ["receive", "map", "exec", "return"],
+      "explanation": "The gateway receives a domain object, maps it to a row, runs the SQL, and returns — keeping all storage detail out of the use case."
+    }
+  ]
+}

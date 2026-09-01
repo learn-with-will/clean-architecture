@@ -1,0 +1,80 @@
+{
+  "id": "quiz-lesson-24",
+  "lessonId": "lesson-24",
+  "title": "Capstone: A System End to End",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple-choice",
+      "prompt": "Which may the CheckOutBook interactor depend on? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "The Member and BookCopy entities" },
+        { "id": "b", "text": "The gateway interfaces it owns" },
+        { "id": "c", "text": "The output port (an interface it owns)" },
+        { "id": "d", "text": "The web framework's request/response objects" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "The interactor depends only inward — on entities and interfaces it owns (gateways, the output port). Framework request/response objects are outer details it must not import."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Where are the concrete adapters (SQL gateways, presenter) constructed and connected?",
+      "options": [
+        { "id": "a", "text": "Inside each entity" },
+        { "id": "b", "text": "At the composition root — the single wiring point near the entry point" },
+        { "id": "c", "text": "Inside the use case" },
+        { "id": "d", "text": "In the humble view" }
+      ],
+      "answer": "b",
+      "explanation": "The composition root is the only place that names concrete classes and injects them, so swapping SQL for in-memory (or web for CLI) is a one-place change."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "You add a 'return a book' feature by writing new code behind the same kinds of ports, leaving check-out untouched — an example of the ______-Closed Principle.",
+      "answer": ["Open", "open"],
+      "explanation": "New behavior is added by adding code behind the same boundaries (open for extension), without modifying the existing check-out code (closed for modification)."
+    },
+    {
+      "id": "q4",
+      "type": "single-choice",
+      "prompt": "In a full request trace, how do control flow and source-code dependencies relate?",
+      "options": [
+        { "id": "a", "text": "Both point outward" },
+        { "id": "b", "text": "Control weaves outward (to the DB) and back (to the view), while every source-code dependency points inward" },
+        { "id": "c", "text": "Both point inward" },
+        { "id": "d", "text": "There are no dependencies" }
+      ],
+      "answer": "b",
+      "explanation": "The signature of a clean boundary: control can flow outward and back, but every source-code dependency points inward toward use cases and entities."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the components a checkout request flows through, outside-in and back out.",
+      "items": [
+        { "id": "controller", "text": "CheckOutController (driving adapter)" },
+        { "id": "usecase", "text": "CheckOutBook (use case)" },
+        { "id": "entities", "text": "Member / BookCopy (entity rules)" },
+        { "id": "gateways", "text": "Gateways (⇄ database)" },
+        { "id": "presenter", "text": "Presenter → humble view" }
+      ],
+      "answer": ["controller", "usecase", "entities", "gateways", "presenter"],
+      "explanation": "Control enters at the controller, runs the use case (which applies entity rules and uses gateways), then reports out through the presenter to the humble view."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each capstone part to its Clean Architecture layer.",
+      "pairs": [
+        { "left": "Member / BookCopy", "right": "Entities" },
+        { "left": "CheckOutBook", "right": "Use case" },
+        { "left": "SqlMemberGateway", "right": "Interface Adapters (gateway)" },
+        { "left": "The web framework / Postgres driver", "right": "Frameworks & Drivers" }
+      ],
+      "explanation": "Entities hold the rules, the interactor orchestrates, the gateway adapts to the database, and the framework/driver is the outer detail — with dependencies pointing inward throughout."
+    }
+  ]
+}

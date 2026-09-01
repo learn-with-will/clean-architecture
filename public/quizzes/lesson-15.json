@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-15",
+  "lessonId": "lesson-15",
+  "title": "Presenters and the UI",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single-choice",
+      "prompt": "What does a presenter produce, and from what?",
+      "options": [
+        { "id": "a", "text": "A response model, from a view model" },
+        { "id": "b", "text": "A display-ready view model, from a use case's response model" },
+        { "id": "c", "text": "An entity, from a database row" },
+        { "id": "d", "text": "SQL, from a request model" }
+      ],
+      "answer": "b",
+      "explanation": "A presenter converts the use case's response model into a logic-free view model that a humble view can render directly."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "What is the Humble Object pattern?",
+      "options": [
+        { "id": "a", "text": "Making every object small" },
+        { "id": "b", "text": "Isolating hard-to-test boundary code (the view) by reducing it to a logic-free shell and moving all logic into a testable companion (the presenter)" },
+        { "id": "c", "text": "Avoiding inheritance" },
+        { "id": "d", "text": "Putting logic into templates" }
+      ],
+      "answer": "b",
+      "explanation": "The Humble Object pattern splits behavior so the untestable view holds no logic and the testable presenter holds all of it."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "A passive, logic-free data structure containing exactly what the view should display is a ______ model.",
+      "answer": ["view"],
+      "explanation": "The presenter builds a view model with pre-formatted strings and pre-computed flags; the humble view just renders it."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Where should each of these be done? Select everything that should happen in the PRESENTER (not the view or use case).",
+      "options": [
+        { "id": "a", "text": "Formatting a number as '$105.99'" },
+        { "id": "b", "text": "Computing a boolean like 'overdue' for the view to obey" },
+        { "id": "c", "text": "Turning a raw date into 'Due in 3 days'" },
+        { "id": "d", "text": "Enforcing the enterprise business rule" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Formatting and pre-computing display flags are the presenter's job. Enforcing business rules belongs in entities."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order the flow from a use case's result to the screen.",
+      "items": [
+        { "id": "response", "text": "Use case emits a response model" },
+        { "id": "presenter", "text": "Presenter converts it" },
+        { "id": "viewmodel", "text": "View model produced" },
+        { "id": "view", "text": "Humble view renders it" }
+      ],
+      "answer": ["response", "presenter", "viewmodel", "view"],
+      "explanation": "The response model flows to the presenter, which builds a view model that the humble view renders."
+    },
+    {
+      "id": "q6",
+      "type": "match-pair",
+      "prompt": "Match each UI-pattern piece to where it lives / what its 'model' is.",
+      "pairs": [
+        { "left": "Controller", "right": "Interface Adapters: input → request model" },
+        { "left": "Presenter", "right": "Interface Adapters: response model → view model" },
+        { "left": "View", "right": "Humble: renders the view model, no logic" },
+        { "left": "The view's 'model'", "right": "The view model, not the entities" }
+      ],
+      "explanation": "MVC/MVP live in the Interface Adapters layer; the view's model is the view model, never your domain entities."
+    }
+  ]
+}

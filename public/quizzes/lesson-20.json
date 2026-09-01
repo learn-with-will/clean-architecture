@@ -1,0 +1,79 @@
+{
+  "id": "quiz-lesson-20",
+  "lessonId": "lesson-20",
+  "title": "Partial and Evolving Boundaries",
+  "passingScore": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "match-pair",
+      "prompt": "Match each boundary form to its defining property.",
+      "pairs": [
+        { "left": "Full boundary", "right": "Reciprocal interfaces + DTOs + two managed components (max independence and cost)" },
+        { "left": "Skip the last step", "right": "All interfaces and DTOs, but kept in one component" },
+        { "left": "One-dimensional boundary", "right": "A single (Strategy-style) interface instead of reciprocal ports" },
+        { "left": "Facade", "right": "A clean entry point that delegates to concretes — no dependency inversion" }
+      ],
+      "explanation": "Boundary strength and cost decrease from a full boundary, through skip-the-last-step and a one-dimensional interface, to a facade (which provides no inversion). Full boundaries cost the most, so you don't build them everywhere."
+    },
+    {
+      "id": "q2",
+      "type": "single-choice",
+      "prompt": "Which partial boundary provides NO dependency inversion?",
+      "options": [
+        { "id": "a", "text": "Skip the last step" },
+        { "id": "b", "text": "One-dimensional boundary" },
+        { "id": "c", "text": "Facade" },
+        { "id": "d", "text": "Full boundary" }
+      ],
+      "answer": "c",
+      "explanation": "A facade depends on the concrete services and clients depend on the facade, so no dependency is inverted; it tidies structure but doesn't buy independence."
+    },
+    {
+      "id": "q3",
+      "type": "fill-blank",
+      "prompt": "The partial boundary that creates all the interfaces and DTOs but keeps everything in a single component is called 'skip the last ______'.",
+      "answer": ["step"],
+      "explanation": "'Skip the last step' saves the cost of managing two components while leaving the code ready to split later."
+    },
+    {
+      "id": "q4",
+      "type": "multiple-choice",
+      "prompt": "Which of these are partial-boundary techniques (cheaper than a full boundary)? Select all that apply.",
+      "options": [
+        { "id": "a", "text": "Skip the last step (interfaces/DTOs in one component)" },
+        { "id": "b", "text": "A one-dimensional (single-interface) boundary" },
+        { "id": "c", "text": "A facade" },
+        { "id": "d", "text": "A full reciprocal boundary with two managed components" }
+      ],
+      "answer": ["a", "b", "c"],
+      "explanation": "Skip-the-last-step, one-dimensional boundaries, and facades are partial boundaries — cheap seams you can strengthen later. A full reciprocal boundary with two components is the full (most expensive) form, not a partial one."
+    },
+    {
+      "id": "q5",
+      "type": "ordering",
+      "prompt": "Order these partial-boundary options from strongest/costliest to weakest/cheapest.",
+      "items": [
+        { "id": "full", "text": "Full boundary (reciprocal interfaces + two components)" },
+        { "id": "skip", "text": "Skip the last step (interfaces/DTOs, one component)" },
+        { "id": "oned", "text": "One-dimensional boundary (single interface)" },
+        { "id": "facade", "text": "Facade (no inversion)" }
+      ],
+      "answer": ["full", "skip", "oned", "facade"],
+      "explanation": "Cost and strength decrease from a full boundary, to skip-the-last-step, to a one-dimensional interface, to a facade."
+    },
+    {
+      "id": "q6",
+      "type": "single-choice",
+      "prompt": "Is deciding which boundaries to build a one-time, up-front task?",
+      "options": [
+        { "id": "a", "text": "Yes — decide everything before coding" },
+        { "id": "b", "text": "No — it's ongoing; watch for friction and strengthen boundaries when the cost becomes justified" },
+        { "id": "c", "text": "Yes — the framework decides for you" },
+        { "id": "d", "text": "No — you should never revisit a boundary" }
+      ],
+      "answer": "b",
+      "explanation": "Martin stresses this is ongoing judgment: watch for real friction (a second implementation, scaling, team splits) and strengthen boundaries then — avoiding both over- and under-engineering."
+    }
+  ]
+}
